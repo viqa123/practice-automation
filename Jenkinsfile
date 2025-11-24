@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     environment {
+        // Имя NodeJS точно такое, как в Jenkins Global Tool Configuration
         NODE_HOME = tool name: 'NodeJS', type: 'NodeJSInstallation'
         PATH = "${env.NODE_HOME}/bin:${env.PATH}"
     }
@@ -12,6 +13,14 @@ pipeline {
                 git branch: 'main',
                     url: 'git@github.com:viqa123/Tests.git',
                     credentialsId: 'github-ssh'
+            }
+        }
+
+        stage('Check Node') {
+            steps {
+                echo "Checking NodeJS and NPM versions"
+                sh 'node -v'
+                sh 'npm -v'
             }
         }
 
