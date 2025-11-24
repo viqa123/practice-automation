@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        // Имя NodeJS точно такое, как в Jenkins Global Tool Configuration
+    
         NODE_HOME = tool name: 'NodeJS', type: 'NodeJSInstallation'
         PATH = "${env.NODE_HOME}/bin:${env.PATH}"
     }
@@ -23,6 +23,14 @@ pipeline {
                 sh 'npm -v'
             }
         }
+
+        stage('Check Node on Master') {
+    steps {
+        sh 'which node || echo "NodeJS not found"'
+        sh 'node -v || echo "NodeJS not found"'
+        sh 'npm -v || echo "NPM not found"'
+             }
+       }
 
         stage('Install Dependencies') {
             steps {
