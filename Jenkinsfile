@@ -3,7 +3,7 @@ pipeline {
 
     environment {
     
-        NODE_HOME = tool name: 'NodeJS 25.2.1', type: 'NodeJSInstallation'
+        NODE_HOME = tool name: 'NodeJS 22.18.0', type: 'NodeJSInstallation'
         PATH = "${env.NODE_HOME}/bin:${env.PATH}"
     }
 
