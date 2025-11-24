@@ -30,8 +30,7 @@ pipeline {
 
         stage('Run Playwright Tests') {
             steps {
-                sh 'npx playwright test tests'
-
+                 sh 'mvn clean test'
             }
         }
     }
